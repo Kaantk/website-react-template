@@ -3,25 +3,21 @@ import { Formik } from "formik";
 import { AdminLoginForm } from "~/validation/AdminLoginForm";
 import classNames from "classnames";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { loginAdmin } from "~/API/loginAdmin";
 import ClipLoader from "react-spinners/ClipLoader";
+import { _logIn } from "~/store/auth/slice";
+import { loginUser } from "~/store/auth/actions";
 
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const handleLogin = async (values) => {
-    console.log(values);
     setLoading(true);
-    setError(null);
     try {
-      const userData = await loginAdmin(values); // loginUser yerine loginAdmin kullan
-      // Giriş başarılı, yönlendirme yapın
-      navigate("/dashboard"); // Dashboard gibi bir sayfaya yönlendirme
-    } catch (error) {
-      setError(error.message);
+      await loginUser(values.email, values.password); // Yapilan istek basarili ise dahsboard sayfasına yonlendir
+    } catch (err) {
+      setError("Login failed.");
+      console.error(err);
     } finally {
       setLoading(false);
     }

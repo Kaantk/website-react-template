@@ -1,25 +1,27 @@
-// slice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isAuthenticated: false,
-  userRole: null,
+  token: null, // Kullanıcı token
+  userRole: null, // Kullanıcı rol bilgisi
+  isAuthenticated: false, // Kullanıcı giris kontrolu
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAuthentication: (state, action) => {
-      state.isAuthenticated = action.payload.isAuthenticated;
+    _logIn: (state, action) => {
+      state.token = action.payload.token;
       state.userRole = action.payload.userRole;
+      state.isAuthenticated = true;
     },
-    logout: (state) => {
-      state.isAuthenticated = false;
+    _logOut: (state) => {
+      state.token = null;
       state.userRole = null;
+      state.isAuthenticated = false;
     },
   },
 });
 
-export const { setAuthentication, logout } = authSlice.actions;
+export const { _logIn, _logOut } = authSlice.actions;
 export default authSlice.reducer;

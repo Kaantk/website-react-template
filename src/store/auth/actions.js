@@ -1,16 +1,20 @@
-// actions.js
-import { setAuthentication, logout } from "./slice";
+import axios from "axios";
 
-// Thunk to check authentication status from localStorage
-export const checkAuthentication = () => (dispatch) => {
-  const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
-  const userRole = localStorage.getItem("userRole");
-  dispatch(setAuthentication({ isAuthenticated, userRole }));
-};
+export const loginUser = async (email, password) => {
+  const data = { email, password };
+  console.log(data);
+  try {
+    const response = await axios.post(REACT_APP_TEST_URL, data);
 
-// Thunk to log out and clear localStorage
-export const performLogout = () => (dispatch) => {
-  localStorage.removeItem("isAuthenticated");
-  localStorage.removeItem("userRole");
-  dispatch(logout());
+    console.log(
+      "İşlem başarılı! Kullanıcı token ve expiration time bilgileri:",
+      response.data
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Login işlemi başarısız oldu:", error);
+
+    throw error;
+  }
 };

@@ -9,7 +9,6 @@ import { NotFound } from "~/pages/Common/NotFound";
 import { About } from "~/pages/Public/About";
 import { Contact } from "~/pages/Public/Contact";
 import { Home } from "~/pages/Public/Home";
-import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -18,11 +17,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "admin",
-    element: (
-      <PrivateRoute>
-        <AdminLayout />
-      </PrivateRoute>
-    ),
+    element: <AdminLayout />,
     children: [
       {
         path: "dashboard",
