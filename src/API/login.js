@@ -1,6 +1,6 @@
 import { apiClient } from "./apiClient";
 
-export const loginAdmin = async (credentials) => {
+export const login = async (credentials) => {
   try {
     const response = await apiClient.post("/login", credentials); // POST isteği ile giriş bilgilerini gönder
     console.log(response.data);
@@ -10,3 +10,5 @@ export const loginAdmin = async (credentials) => {
     throw error; // Hata fırlat, böylece handleLogin'de yakalanabilir
   }
 };
+
+export const logout = () => {};

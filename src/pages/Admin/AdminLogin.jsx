@@ -7,7 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { _logIn } from "~/store/auth/slice";
 import { loginUser } from "~/store/auth/actions";
 
-export const Login = () => {
+export const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 

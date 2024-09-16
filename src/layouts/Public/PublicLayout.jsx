@@ -12,7 +12,7 @@ export const PublicLayout = () => {
         <Header />
         {/* Main */}
         <main className="flex-1">
-          <section className="w-11/12 mx-auto lg:max-w-[1200px]">
+          <section className="w-11/12 h-full mx-auto lg:max-w-[1200px]">
             {/* Sayfa icerikleri main icerisine dinamik olara gelir */}
             <Outlet />
           </section>

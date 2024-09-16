@@ -1,19 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AdminLayout } from "~/layouts/Admin/AdminLayout";
 import { PublicLayout } from "~/layouts/Public/PublicLayout";
+import { AdminLogin } from "~/pages/Admin/AdminLogin";
 import { Dashboard } from "~/pages/Admin/Dashboard";
-import { Login } from "~/pages/Admin/Login";
 import { Settings } from "~/pages/Admin/Settings";
 import { Users } from "~/pages/Admin/Users";
 import { NotFound } from "~/pages/Common/NotFound";
 import { About } from "~/pages/Public/About";
 import { Contact } from "~/pages/Public/Contact";
 import { Home } from "~/pages/Public/Home";
+import { UserLogin } from "~/pages/Public/UserLogin";
+import { UserRegister } from "~/pages/Public/UserRegister";
 
 export const router = createBrowserRouter([
   {
     path: "admin/login",
-    element: <Login />,
+    element: <AdminLogin />,
   },
   {
     path: "admin",
@@ -48,6 +50,14 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "login",
+        element: <UserLogin />,
+      },
+      {
+        path: "register",
+        element: <UserRegister />,
       },
     ],
   },

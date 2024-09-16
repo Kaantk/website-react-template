@@ -3,6 +3,7 @@ import { Drawer } from "flowbite-react";
 import { useState } from "react";
 import { Icon } from "~/assets/icons/icons";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ export const Header = () => {
           <div className="flex items-center justify-between">
             {/* Logo yer alıcak */}
             <div>
-              <a href="#">Logo</a>
+              <Link to="/">Logo</Link>
             </div>
 
             {/* Mobile menu button */}
@@ -31,10 +32,7 @@ export const Header = () => {
 
             <div className="hidden lg:block">
               <nav>
-                <ul>
-                  <li>
-                    <a href="#"></a>
-                  </li>
+                <ul className="flex items-center gap-2">
                   <li>
                     <Popover className="relative">
                       <PopoverButton>Solutions</PopoverButton>
@@ -48,6 +46,11 @@ export const Header = () => {
                         <a href="#">Integrations</a>
                       </PopoverPanel>
                     </Popover>
+                  </li>
+                  <li>
+                    <button className="bg-blue-600 text-white rounded-md px-2 py-1 hover:bg-blue-500 transition-all duration-200">
+                      <Link to="/login">Giriş Yap</Link>
+                    </button>
                   </li>
                 </ul>
               </nav>
